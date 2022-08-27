@@ -10599,27 +10599,27 @@ if text == "زواج" or text == "رفع زوجتي" or text == "رفع زوجي
   local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
   local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
   if tonumber(Message_Reply.sender.user_id) == tonumber(msg.sender.user_id) then
-    return send(msg_chat_id,msg_id,"انت اهبل يبني عاوز تتجوز نفسك ؟ هتتكاثر ازاي طيب ؟!!","md",true)  
+    return send(msg_chat_id,msg_id,"انت غبي كيف تتزوج نفسك؟!","md",true)  
   end
   if tonumber(Message_Reply.sender.user_id) == tonumber(black) then
-    return send(msg_chat_id,msg_id,"ابعد عني يحيحان ملكقتش غيري","md",true)  
+    return send(msg_chat_id,msg_id,"ابعد عنيي","md",true)  
   end
   if Redis:sismember(black..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
     local rd_mtzwga = {
-      "اسف يصحبي متجوزه",
-      "متجوزه يبن عمي شفلك واحده تانيه",
-      "يبني متجوزه اجوزهاشلك ازاي انا",
-      "للاسف متجوزه بس  لو العمليه جايبه اخرها شوف واحده تانيه",
-      "يادي الكسفه طلعت متجوزه قبلك"
+      "متزوجه اتركها",
+      "شف غيرها متزوجة هذي",
+      "غبي انت اقولك ذي متزوجة",
+      "للأسف متزوجة ماتقدر",
+      "راحت عليك طلعت متزوجة"
     }
     return send(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_mtzwga[math.random(#rd_mtzwga)]).Reply,"md",true)  
     else
       local rd_zwag = {
         "تم زواجك منه وبارك الله لكم وعليكم",
-        "لولولولويي تم الزواج عقبال العيال بقا",
-        "مبروك اتجوزتها عاوز اتغدا بقا في الفرح",
-        "تم زواجكم... ودا رقمي عشان لو العريس معرفش يسد 012345..",
-        "الزواج تم اتفضلو اعملو احلا واحد بقا هيهيهي"
+        "تم الزواج مبروك",
+        "الف مبروك منك المال ومنها العيال",
+        "تم الزواج يلا ع الغرفة",
+        " مبروك تم الزواج لاتنسونا من الدعاء لا اطلقكم"
       }
     if Redis:sismember(black..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) then 
     Redis:srem(black..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id)
@@ -10647,27 +10647,27 @@ if text == "طلاق" or text == "تنزيل زوجتي" or text == "تزيل ز
   local Message_Reply = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id)
   local UserInfo = LuaTele.getUser(Message_Reply.sender.user_id)
   if tonumber(Message_Reply.sender.user_id) == tonumber(msg.sender.user_id) then
-    return send(msg_chat_id,msg_id,"احا هو انت كنت اتجوزت نفسك عشان تطلق","md",true)  
+    return send(msg_chat_id,msg_id,"انت غبي تطلق نفسك كيف؟ ","md",true)  
   end
   if tonumber(Message_Reply.sender.user_id) == tonumber(black) then
-    return send(msg_chat_id,msg_id,"هو احنا كنا اتجوزنا يروح خالتك عشان نطلق","md",true)  
+    return send(msg_chat_id,msg_id,"اقول ابعد ع اساس طايقك انا ","md",true)  
   end
   if Redis:sismember(black..msg_chat_id.."zwgat:",Message_Reply.sender.user_id) then
     Redis:srem(black..msg_chat_id.."zwgat:",Message_Reply.sender.user_id)
     Redis:sadd(black..msg_chat_id.."mutlqat:",Message_Reply.sender.user_id) 
     local rd_tmtlaq = {
       "تم طلاقكم للاسف",
-      "تم الطلاق بلص ام عبير عاوزه تعرف اتطلقتو لي ؟",
-      "تم الطلاق عشان المعلم مبيعرفش",
-      "تم الطلاق عشان في سوسه دخلت وسطهم",
-      "تم الطلاق بلص دا رقمي عشان لو حبيتي نتكلم باحترام 01234..."
+      "تم الطلاق ع المحكمة يلا",
+      "تم الطلاق اللهم لاشماته",
+      "تم الطلاق بسبب حية خربت بينهم ",
+      "تم الطلاق تبي رقمي نتواصل؟"
     }
     return send(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tmtlaq[math.random(#rd_tmtlaq)]).Reply,"md",true)  
     else
       local rd_tlaq = {
-        "مكنتش اتجوزت عشان تطلق اصلا",
-        "بايره محدش اتجوزها",
-        "محدش عبرها قبل كدا اسسن"
+        "مو متزوج اصلاً",
+        "محد عبرها اصلاً  ",
+        "عجوز هذي مو متزوجة"
       }
     return send(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender.user_id,rd_tlaq[math.random(#rd_tlaq)]).Reply,"md",true)  
     end
@@ -12191,62 +12191,7 @@ end
 end
 
 
-if Redis:get(black.."youtube"..msg.sender.user_id..msg_chat_id) == "mp3" then
-Redis:del(black.."youtube"..msg.sender.user_id..msg_chat_id)
-local rep = msg.id/2097152/0.5
-local m = json:decode(https.request("https://api.telegram.org/bot"..Token.."/sendAnimation?chat_id="..msg_chat_id.."&animation=https://t.me/photojack14366/65&reply_to_message_id="..rep)).result.message_id
-local se = http.request("https://api-jack.ml/api18.php?search="..URL.escape(text))
-local j = JSON.decode(se)
-local link = j.results[1].url
-local title = j.results[1].title 
-local title = title:gsub("/","-") 
-local title = title:gsub("\n","-") 
-local title = title:gsub("|","-") 
-local title = title:gsub("'","-") 
-local title = title:gsub('"',"-") 
-print(link)
-os.execute("yt-dlp "..link.." -f 251 -o '"..title..".mp3'")
-LuaTele.sendAudio(msg_chat_id,msg_id,'./'..title..'.mp3',"["..title.."]("..link..")","md",nil,title)
-https.request("https://api.telegram.org/bot"..Token.."/deleteMessage?chat_id="..msg_chat_id.."&message_id="..m)
-Redis:del(black.."youtube"..msg.sender.user_id..msg_chat_id)
-sleep(2)
-os.remove(""..title..".mp3")
-end
-if Redis:get(black.."youtube"..msg.sender.user_id..msg_chat_id) == "mp4" then
-local rep = msg.id/2097152/0.5
-local m = json:decode(https.request("https://api.telegram.org/bot"..Token.."/sendAnimation?chat_id="..msg_chat_id.."&animation=https://t.me/photojack14366/65&reply_to_message_id="..rep)).result.message_id
-local se = http.request("https://api-jack.ml/api18.php?search="..URL.escape(text))
-local j = JSON.decode(se)
-local link = j.results[1].url
-local title = j.results[1].title 
-local title = title:gsub("/","-") 
-local title = title:gsub("\n","-") 
-local title = title:gsub("|","-") 
-local title = title:gsub("'","-") 
-local title = title:gsub('"',"-") 
-os.execute("yt-dlp "..link.." -f 18 -o '"..title..".mp4'")
-LuaTele.sendVideo(msg_chat_id,msg_id,'./'..title..'.mp4',"["..title.."]("..link..")","md") 
-https.request("https://api.telegram.org/bot"..Token.."/deleteMessage?chat_id="..msg_chat_id.."&message_id="..m)
-Redis:del(black.."youtube"..msg.sender.user_id..msg_chat_id)
-sleep(2)
-os.remove(""..title..".mp4")
-end
-if text == "يوتيوب" or text == 'The YouTube' or text == 'YouTube' or text == 'The Youtube' or text == 'Youtube' or text == 'youtube' or text == 'You Tube' or text == 'YT' or text == 'Yt' then
-local reply_markup = LuaTele.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = '𝑀𝑃3', data = msg.sender.user_id..'/mp3'..msg_id}, {text = '𝑀𝑃4', data = msg.sender.user_id..'/mp4'..msg_id}, 
-},
-{
-{text = 'Source Black ', url = "https://t.me/M_D_I"}
-},
-}
-}
-return send(msg_chat_id,msg_id, [[*
- ⌯ 𝐶𝐻𝑂𝑂𝑆𝐸 𝐻𝑂𝑊 𝑌𝑂𝑈 𝑊𝐴𝑁𝑇 𝑇𝑂 𝐷𝑂𝑊𝑁𝐿𝑂𝐴𝐷 .
-*]],"md",false, false, false, false, reply_markup)
-end
+
 if text then
 if text:match('^انذار @(%S+)$') or text:match('^إنذار @(%S+)$') then
 if not msg.Admin then
@@ -12293,6 +12238,8 @@ return send(msg_chat_id,msg_id,Reply_Status(UserInfo.id," ⌯ اختار الع�
 end
 end 
 end
+
+
 if text == "انذار" or text == "إنذار" then
 if msg.reply_to_message_id ~= 0 then
 if not msg.Admin then
